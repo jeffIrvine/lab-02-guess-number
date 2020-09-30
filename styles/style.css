@@ -66,10 +66,18 @@ footer {
     box-shadow: var(--shadow);
 }
 
-
 h2 {
     font-size: 1.8rem;
     font-weight: bold;
+}
+
+.image {
+    max-height: 600px;
+    max-width: 600px;
+}
+
+.instructions {
+    text-align: center;
 }
 
 .gutter-right {
@@ -83,8 +91,6 @@ h2 {
 header img {
     height: var(--header-height);
 }
-
-
 
 content {
     width: 80%;

@@ -13,9 +13,8 @@ const lossNum = document.getElementById('loss-num');
 let guesses = 4;
 let correctNum = Math.ceil(Math.random() * 20);
 let totalWins = 0;
-let totalLoss = 0
+let totalLoss = 0;
 console.log(correctNum, 'RandNum');
-
 
 
 resetButton.addEventListener('click', reset);
@@ -33,20 +32,23 @@ guessButton.addEventListener('click', () => {
         guesses = 4;
         guessesLeft.textContent = guesses;
         correctNum = Math.ceil(Math.random() * 20);
-        answer.textContent = 'Great job, you won! Go again!';
+        image.src = 'assets/rmSaved.png';
+        answer.textContent = 'Great job, you saved Rick and Morty! Go again!';
         console.log(correctNum, 'winNum');
     }
     if (compNumResult === 1) {
         answer.textContent = 'Sorry that\'s too high!';
+        image.src = 'assets/rmFlipOff.png';
     }
     if (compNumResult === -1) {
         answer.textContent = 'Sorry that is too low!';
+        image.src = 'assets/rmFlipOff.png';
     }
     if (guesses === 0) {
         guessButton.disabled = true;
-        answer.textContent = 'Sorry you lost... you have no more tries.';
+        answer.textContent = 'Sorry you lost... they already died.';
+        image.src = 'assets/rmDeath.png';
         totalLoss++;
-        reset();
     }
     
     userInput.value = '';
@@ -62,6 +64,7 @@ function reset() {
     userInput.value = '';
     answer.textContent = 'The game has reset!';
     guessButton.disabled = false;
+    image.src = 'assets/portal.png';
     console.log(correctNum, 'ResetNum');
 }
 
