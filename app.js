@@ -34,7 +34,7 @@ guessButton.addEventListener('click', () => {
         guessesLeft.textContent = guesses;
         correctNum = Math.ceil(Math.random() * 20);
         answer.textContent = 'Great job, you won! Go again!';
-        
+        console.log(correctNum, 'winNum');
     }
     if (compNumResult === 1) {
         answer.textContent = 'Sorry that\'s too high!';
