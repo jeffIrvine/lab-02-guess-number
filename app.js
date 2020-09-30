@@ -7,26 +7,34 @@ const userInput = document.getElementById('user-input');
 const image = document.getElementById('image');
 const answer = document.getElementById('answer');
 const resetButton = document.getElementById('reset');
+const winNum = document.getElementById('win-num');
+const lossNum = document.getElementById('loss-num');
 
-// console.log();
 let guesses = 4;
 let correctNum = Math.ceil(Math.random() * 20);
 let totalWins = 0;
-console.log(correctNum);
-// console.log(correctAnswer);
+let totalLoss = 0
+console.log(correctNum, 'RandNum');
 
 
 
+resetButton.addEventListener('click', reset);
 guessButton.addEventListener('click', () => {
     guesses--;
     guessesLeft.textContent = guesses;
     
     const userNumber = Number(userInput.value);
     const compNumResult = compareNumbers(userNumber, correctNum);
-    console.log(compNumResult);
+    console.log(compNumResult, 'CompRes');
+    console.log(userInput.value, 'input');
 
     if (compNumResult === 0) {
-        answer.textContent = 'You won!';
+        totalWins++;
+        guesses = 4;
+        guessesLeft.textContent = guesses;
+        correctNum = Math.ceil(Math.random() * 20);
+        answer.textContent = 'Great job, you won! Go again!';
+        
     }
     if (compNumResult === 1) {
         answer.textContent = 'Sorry that\'s too high!';
@@ -36,15 +44,26 @@ guessButton.addEventListener('click', () => {
     }
     if (guesses === 0) {
         guessButton.disabled = true;
-        answer.textContent = 'Sorry you have no more tries!';
+        answer.textContent = 'Sorry you lost... you have no more tries.';
+        totalLoss++;
+        reset();
     }
+    
+    userInput.value = '';
+    winNum.textContent = totalWins;
+    lossNum.textContent = totalLoss;
 });
 
-resetButton.addEventListener('click', () => {
+
+function reset() {
     correctNum = Math.ceil(Math.random() * 20);
     guesses = 4;
+    guessesLeft.textContent = guesses;
+    userInput.value = '';
     answer.textContent = 'The game has reset!';
-});
+    guessButton.disabled = false;
+    console.log(correctNum, 'ResetNum');
+}
 
 
 // initialize state

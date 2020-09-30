@@ -30,11 +30,17 @@
                     Instructions Guess the right portal!
                 </section>
                 <img id="image" src="" alt="">
-                <div>Guesses left: <span id="guesses-left">4</span> <span ></span> </div>
+                <div>Guesses left: <span id="guesses-left">4</span></div>
+                <div class="score">
+                    <div>Wins:<span id="win-num">0</span></div>
+                    <div>Losses:<span id="loss-num">0</span></div>
+                </div>
                 <input id="user-input" type="number">
-                <button id="guess-button">Guess</button>
+                <div class="buttons">
+                    <button id="guess-button">Guess</button>
+                    <button id="reset">Reset</button>
+                </div>
                 <div id="answer"></div>
-                <button id="reset">Reset</button>
         </section>
     </main>
     <footer>
